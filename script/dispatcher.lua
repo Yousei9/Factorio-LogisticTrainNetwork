@@ -623,13 +623,13 @@ function ProcessRequest(reqIndex, request)
   schedule.records[#schedule.records + 1] = NewScheduleRecord(depot.entity.backer_name, "inactivity", depot_inactivity)
 
   -- force train to go to the station we pick by setting a temporary waypoint on the rail that the station is connected to
-  if fromRail then
+  if fromRail and create_temporary_stops then
     -- wait time 0 is interpreted as waypoint without stopping by Factorio
     schedule.records[#schedule.records + 1] = NewScheduleRecord(nil, "time", 0, nil, 0, fromRail)
   end
   schedule.records[#schedule.records + 1] = NewScheduleRecord(from, "item_count", "≥", loadingList)
 
-  if toRail then
+  if toRail and create_temporary_stops then
     schedule.records[#schedule.records + 1] = NewScheduleRecord(nil, "time", 0, nil, 0, toRail)
   end
   schedule.records[#schedule.records + 1] = NewScheduleRecord(to, "item_count", "=", loadingList, 0)

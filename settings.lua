@@ -136,6 +136,13 @@ data:extend({
   },
   {
     type = "bool-setting",
+    name = "ltn-dispatcher-create-temporary-stops",
+    order = "cg",
+    setting_type = "runtime-global",
+    default_value = true
+  },
+  {
+    type = "bool-setting",
     name = "ltn-depot-reset-filters",
     order = "da",
     setting_type = "runtime-global",

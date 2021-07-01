@@ -17,6 +17,7 @@ stop_timeout = settings.global["ltn-dispatcher-stop-timeout(s)"].value * 60
 condition_stop_timeout = {type = "time", compare_type = "or", ticks = stop_timeout }
 delivery_timeout = settings.global["ltn-dispatcher-delivery-timeout(s)"].value * 60
 finish_loading = settings.global["ltn-dispatcher-finish-loading"].value
+create_temporary_stops = settings.global["ltn-dispatcher-create-temporary-stops"].value
 requester_delivery_reset = settings.global["ltn-dispatcher-requester-delivery-reset"].value
 dispatcher_enabled = settings.global["ltn-dispatcher-enabled"].value
 dispatcher_updates_per_tick = settings.global["ltn-dispatcher-updates-per-tick"].value
@@ -64,6 +65,9 @@ script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
   end
   if event.setting == "ltn-dispatcher-finish-loading" then
     finish_loading = settings.global["ltn-dispatcher-finish-loading"].value
+  end
+  if event.setting == "ltn-dispatcher-create-temporary-stops" then
+    create_temporary_stops = settings.global["ltn-dispatcher-create-temporary-stops"].value
   end
   if event.setting == "ltn-dispatcher-requester-delivery-reset" then
     requester_delivery_reset = settings.global["ltn-dispatcher-requester-delivery-reset"].value
